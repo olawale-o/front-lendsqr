@@ -42,6 +42,7 @@ const Login = ({ isFocus }) => {
             value={values.lastName}
             className="input"
             placeholder="Email"
+            autoComplete="off"
           />
         </div>
         <div className="field">

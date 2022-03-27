@@ -44,6 +44,7 @@ const Register = ({ isFocus }) => {
             value={values.lastName}
             className="input"
             placeholder="Last Name"
+            autoComplete="off"
           />
         </div>
         <div className="field">
@@ -54,6 +55,7 @@ const Register = ({ isFocus }) => {
             value={values.lastName}
             className="input"
             placeholder="First name"
+            autoComplete="off"
           />
         </div>
         <div className="field">
@@ -64,6 +66,7 @@ const Register = ({ isFocus }) => {
             value={values.registerEmail}
             className="input"
             placeholder="Email"
+            autoComplete="off"
           />
         </div>
         <div className="field">
