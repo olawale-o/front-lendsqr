@@ -24,10 +24,16 @@ export default {
           required: 'Email is required',
         },
       },
-      username: {
-        name: 'username',
+      firstName: {
+        name: 'firstname',
         error: {
-          required: 'Username is required',
+          required: 'Firstname is required',
+        },
+      },
+      lastName: {
+        name: 'lastname',
+        error: {
+          required: 'Lastname is required',
         },
       },
       registerPassword: {

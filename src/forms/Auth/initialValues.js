@@ -2,7 +2,7 @@ import model from './model';
 
 const {
   login: { formField: { email, password } },
-  register: { formField: { username, registerEmail, registerPassword } },
+  register: { formField: { firstName, lastName, registerEmail, registerPassword } },
 } = model;
 
 export default {
@@ -11,7 +11,8 @@ export default {
     [password.name]: '',
   },
   registerInitialValues: {
-    [username.name]: '',
+    [firstName.name]: '',
+    [lastName.name]: '',
     [registerEmail.name]: '',
     [registerPassword.name]: '',
   },
