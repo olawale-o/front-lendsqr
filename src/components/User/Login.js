@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import { model, initialValues, Schema } from '../../forms/Auth';
+import { CustomTextField } from '../../forms/Shared';
 
 const { login: { formField: { email, password } } } = model;
 
@@ -32,10 +33,10 @@ const Login = () => {
           <span className="right" />
         </div>
         <div className="field">
-          <CustomInput type="email" name={email.name} placeholder="Email" />
+          <CustomTextField type="email" name={email.name} placeholder="Email" />
         </div>
         <div className="field">
-          <CustomInput type="password" name={password.name} placeholder="Password" />
+          <CustomTextField type="password" name={password.name} placeholder="Password" />
         </div>
         <button
           type="submit"
