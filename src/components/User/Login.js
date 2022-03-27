@@ -3,6 +3,8 @@ import PropType from 'prop-types';
 import { model, initialValues, Schema } from '../../forms/Auth';
 
 const { login: { formField: { email, password } } } = model;
+const { loginSchema } = Schema;
+const { loginInitialValues } = initialValues;
 
 const Login = ({ isFocus, onActive }) => {
   const onReset = (resetForm) => {
@@ -15,13 +17,16 @@ const Login = ({ isFocus, onActive }) => {
     handleChange,
     handleSubmit,
     handleReset,
+    handleBlur,
     isSubmitting,
     dirty,
     isValid,
     values,
+    errors,
+    touched,
   } = useFormik({
-    initialValues,
-    validationSchema: Schema,
+    initialValues: loginInitialValues,
+    validationSchema: loginSchema,
     onSubmit: (values) => {},
   });
   return(
@@ -46,21 +51,25 @@ const Login = ({ isFocus, onActive }) => {
             name={email.name}
             type="email"
             onChange={handleChange}
-            value={values.lastName}
+            onBlur={handleBlur}
+            value={values.email}
             className="input"
             placeholder="Email"
             autoComplete="off"
           />
+          {touched.email && errors.email && <span>{errors.email}</span>}
         </div>
         <div className="field">
           <input
             name={password.name}
             type="password"
             onChange={handleChange}
+            onBlur={handleBlur}
             value={values.password}
             className="input"
             placeholder="Password"
           />
+          {touched.password && errors.password && <span>{errors.password}</span>}
         </div>
         <button
           type="submit"
