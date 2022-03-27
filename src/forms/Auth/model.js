@@ -27,13 +27,13 @@ export default {
       firstName: {
         name: 'firstname',
         error: {
-          required: 'Firstname is required',
+          required: 'First name is required',
         },
       },
       lastName: {
         name: 'lastname',
         error: {
-          required: 'Lastname is required',
+          required: 'Last name is required',
         },
       },
       registerPassword: {
