@@ -1,14 +1,20 @@
 import { useFormik } from 'formik';
 import PropType from 'prop-types';
 import { model, initialValues, Schema } from '../../forms/Auth';
-import { CustomTextField } from '../../forms/Shared';
 
 const { register: { formField: { registerEmail, registerPassword, firstName, lastName } } } = model;
 
-const Register = ({ isFocus }) => {
+const Register = ({ isFocus, onActive }) => {
+  const onReset = (resetForm) => {
+    if (!isFocus) {
+      resetForm();
+    }
+    onActive();
+  };
   const {
     handleSubmit,
     handleChange,
+    handleReset,
     isSubmitting,
     dirty,
     isValid,
@@ -24,7 +30,7 @@ const Register = ({ isFocus }) => {
       <form onSubmit={handleSubmit}>
         <h1>Getting Started</h1>
         <div className="switch-buttons">
-        <button type="button" className={`switch-btn ${!isFocus ? 'active' : ''}`}>Login</button>
+        <button type="button" className={`switch-btn ${!isFocus ? 'active' : ''}`} onClick={() => onReset(handleReset)}>Login</button>
               <button type="button" className={`switch-btn ${isFocus ? 'active' : ''}`}>Register</button>
         </div>
         <div className="continue-with">
@@ -95,4 +101,5 @@ export default Register;
 
 Register.propTypes = {
   isFocus: PropType.bool.isRequired,
+  onActive: PropType.func.isRequired,
 };

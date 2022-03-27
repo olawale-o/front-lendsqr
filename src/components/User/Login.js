@@ -4,10 +4,17 @@ import { model, initialValues, Schema } from '../../forms/Auth';
 
 const { login: { formField: { email, password } } } = model;
 
-const Login = ({ isFocus }) => {
+const Login = ({ isFocus, onActive }) => {
+  const onReset = (resetForm) => {
+    if (!isFocus) {
+      resetForm();
+    }
+    onActive();
+  };
   const {
     handleChange,
     handleSubmit,
+    handleReset,
     isSubmitting,
     dirty,
     isValid,
@@ -23,7 +30,7 @@ const Login = ({ isFocus }) => {
       <h1>Welcome back</h1>
         <div className="switch-buttons">
           <button type="button" className={`switch-btn ${!isFocus ? 'active' : ''}`}>Login</button>
-          <button type="button" className={`switch-btn ${isFocus ? 'active' : ''}`}>Register</button>
+          <button type="button" className={`switch-btn ${isFocus ? 'active' : ''}`} onClick={() => onReset(handleReset)}>Register</button>
         </div>
         <div className="continue-with">
           <button type="button" className="google">Google</button>
@@ -72,4 +79,5 @@ export default Login;
 
 Login.propTypes = {
   isFocus: PropType.bool.isRequired,
+  onActive: PropType.func.isRequired,
 };
