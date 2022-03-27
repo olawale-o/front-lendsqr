@@ -1,15 +1,18 @@
 import { useFormik } from 'formik';
+import PropType from 'prop-types';
 import { model, initialValues, Schema } from '../../forms/Auth';
 import { CustomTextField } from '../../forms/Shared';
 
 const { register: { formField: { registerEmail, registerPassword, firstName, lastName } } } = model;
 
-const Register = () => {
+const Register = ({ isFocus }) => {
   const {
     handleSubmit,
+    handleChange,
     isSubmitting,
     dirty,
     isValid,
+    values,
   } = useFormik({
     initialValues,
     validationSchema: Schema,
@@ -17,12 +20,12 @@ const Register = () => {
   });
 
   return (
-    <div className="signup-container">
+    <div className="signup__container">
       <form onSubmit={handleSubmit}>
         <h1>Getting Started</h1>
         <div className="switch-buttons">
-          <button type="button">Login</button>
-          <button type="button">Register</button>
+        <button type="button" className={`switch-btn ${!isFocus ? 'active' : ''}`}>Login</button>
+              <button type="button" className={`switch-btn ${isFocus ? 'active' : ''}`}>Register</button>
         </div>
         <div className="continue-with">
           <button type="button" className="google">Google</button>
@@ -34,16 +37,44 @@ const Register = () => {
           <span className="right" />
         </div>
         <div className="field">
-          <CustomTextField type="text" name={firstName.name} placeholder="First Name" />
+          <input
+            name={lastName.name}
+            type="text"
+            onChange={handleChange}
+            value={values.lastName}
+            className="input"
+            placeholder="Last Name"
+          />
         </div>
         <div className="field">
-          <CustomTextField type="text" name={lastName.name} placeholder="Last Name" />
+          <input
+            name={firstName.name}
+            type="text"
+            onChange={handleChange}
+            value={values.lastName}
+            className="input"
+            placeholder="First name"
+          />
         </div>
         <div className="field">
-          <CustomTextField type="email" name={registerEmail.name} placeholder="Email" />
+          <input
+            name={registerEmail.name}
+            type="email"
+            onChange={handleChange}
+            value={values.registerEmail}
+            className="input"
+            placeholder="Email"
+          />
         </div>
         <div className="field">
-          <CustomTextField type="password" name={registerPassword.name} placeholder="Password" />
+          <input
+            name={registerPassword.name}
+            type="password"
+            onChange={handleChange}
+            value={values.registerPassword}
+            className="input"
+            placeholder="Password"
+          />
         </div>
         <button
           type="submit"
@@ -58,3 +89,7 @@ const Register = () => {
 };
 
 export default Register;
+
+Register.propTypes = {
+  isFocus: PropType.bool.isRequired,
+};
