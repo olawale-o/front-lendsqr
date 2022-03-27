@@ -1,9 +1,9 @@
-import authModel from './authModel';
+import model from './model';
 
 const {
   login: { formField: { email, password } },
   register: { formField: { username, registerEmail, registerPassword } },
-} = authModel;
+} = model;
 
 export default {
   loginInitialValues: {
