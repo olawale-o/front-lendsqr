@@ -1,9 +1,9 @@
 import { useFormik } from 'formik';
 import { model, initialValues, Schema } from '../../forms/Auth';
 
-const { login: { formField: { email, password } } } = model;
+const { register: { formField: { registerEmail, registerPassword, firstName, lastName } } } = model;
 
-const Login = () => {
+const Register = () => {
   const {
     handleSubmit,
     isSubmitting,
@@ -14,10 +14,11 @@ const Login = () => {
     validationSchema: Schema,
     onSubmit: (values) => {},
   });
-  return(
-    <div className="login__container">
+
+  return (
+    <div className="signup-container">
       <form onSubmit={handleSubmit}>
-      <h1>Welcome back</h1>
+        <h1>Getting Started</h1>
         <div className="switch-buttons">
           <button type="button">Login</button>
           <button type="button">Register</button>
@@ -32,21 +33,27 @@ const Login = () => {
           <span className="right" />
         </div>
         <div className="field">
-          <CustomInput type="email" name={email.name} placeholder="Email" />
+          <CustomInput type="text" name={firstName.name} placeholder="First Name" />
         </div>
         <div className="field">
-          <CustomInput type="password" name={password.name} placeholder="Password" />
+          <CustomInput type="text" name={lastName.name} placeholder="Last Name" />
+        </div>
+        <div className="field">
+          <CustomInput type="email" name={registerEmail.name} placeholder="Email" />
+        </div>
+        <div className="field">
+          <CustomInput type="password" name={registerPassword.name} placeholder="Password" />
         </div>
         <button
           type="submit"
           className="auth-btn"
           disabled={isSubmitting || !(dirty && isValid)}
         >
-          Log in
+          Create
         </button>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Register;
