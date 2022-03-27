@@ -3,7 +3,7 @@ import model from './model';
 
 const {
   login: { formField: { email, password } },
-  register: { formField: { username, registerEmail, registerPassword } },
+  register: { formField: { firstName, lastName, registerEmail, registerPassword } },
 } = model;
 
 export default {
@@ -12,7 +12,8 @@ export default {
     [password.name]: Yup.string().required(password.error.required).label(password.name),
   }),
   registerSchema: () => Yup.object().shape({
-    [username.name]: Yup.string().required(username.error.required).label(username.name),
+    [firstName.name]: Yup.string().required(firstName.error.required).label(firstName.name),
+    [lastName.name]: Yup.string().required(lastName.error.required).label(lastName.name),
     [registerEmail.name]: Yup.string().required(registerEmail.error.required)
       .label(registerEmail.name),
     [registerPassword.name]: Yup.string().required(registerPassword.error.required)
