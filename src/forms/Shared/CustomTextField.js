@@ -17,7 +17,7 @@ const CustomTextField = ({
         autoComplete="off"
         required
       />
-      <span className="field__error">{touched && error && error}</span>
+      <span className="form__error">{touched && error && error}</span>
     </>
   );
 };

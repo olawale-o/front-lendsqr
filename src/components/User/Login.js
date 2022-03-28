@@ -1,6 +1,7 @@
 import { useFormik } from 'formik';
 import PropType from 'prop-types';
 import { model, initialValues, Schema } from '../../forms/Auth';
+import { CustomTextField } from '../../forms/Shared';
 
 const { login: { formField: { email, password } } } = model;
 const { loginSchema } = Schema;
@@ -47,29 +48,28 @@ const Login = ({ isFocus, onActive }) => {
           <span className="right" />
         </div>
         <div className="field">
-          <input
+          <CustomTextField
             name={email.name}
             type="email"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.email}
-            className="input"
             placeholder="Email"
-            autoComplete="off"
+            value={values.email}
+            error={errors.email}
+            touched={touched.email}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
           />
-          {touched.email && errors.email && <span>{errors.email}</span>}
         </div>
         <div className="field">
-          <input
+          <CustomTextField
             name={password.name}
             type="password"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.password}
-            className="input"
             placeholder="Password"
+            value={values.password}
+            error={errors.password}
+            touched={touched.password}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
           />
-          {touched.password && errors.password && <span>{errors.password}</span>}
         </div>
         <button
           type="submit"

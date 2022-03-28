@@ -1,6 +1,7 @@
 import { useFormik } from 'formik';
 import PropType from 'prop-types';
 import { model, initialValues, Schema } from '../../forms/Auth';
+import { CustomTextField } from '../../forms/Shared';
 
 const { register: { formField: { registerEmail, registerPassword, firstName, lastName } } } = model;
 const { registerSchema } = Schema;
@@ -48,55 +49,52 @@ const Register = ({ isFocus, onActive }) => {
           <span className="right" />
         </div>
         <div className="field">
-          <input
+          <CustomTextField
             name={firstName.name}
             type="text"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.lastName}
-            className="input"
-            placeholder="First name"
-            autoComplete="off"
+            placeholder="First Name"
+            value={values.firstname}
+            error={errors.firstname}
+            touched={touched.firstname}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
           />
-          {touched.firstname && errors.firstname && <span>{errors.firstname}</span>}
         </div>
         <div className="field">
-          <input
+          <CustomTextField
             name={lastName.name}
             type="text"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.lastName}
-            className="input"
             placeholder="Last Name"
-            autoComplete="off"
+            value={values.lastname}
+            error={errors.lastname}
+            touched={touched.lastname}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
           />
-          {touched.lastname && errors.lastname && <span>{errors.lastname}</span>}
         </div>
         <div className="field">
-          <input
+          <CustomTextField
             name={registerEmail.name}
             type="email"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.registerEmail}
-            className="input"
             placeholder="Email"
-            autoComplete="off"
+            value={values.email}
+            error={errors.email}
+            touched={touched.email}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
           />
-          {touched.email && errors.email && <span>{errors.email}</span>}
         </div>
         <div className="field">
-          <input
+          <CustomTextField
             name={registerPassword.name}
             type="password"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.registerPassword}
-            className="input"
-            placeholder="Password"
+            placeholder="password"
+            value={values.password}
+            error={errors.password}
+            touched={touched.password}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
           />
-          {touched.password && errors.password && <span>{errors.password}</span>}
         </div>
         <button
           type="submit"
@@ -105,6 +103,9 @@ const Register = ({ isFocus, onActive }) => {
         >
           Create
         </button>
+        <pre>
+          {JSON.stringify(values, 2, null)}
+        </pre>
       </form>
     </div>
   );
