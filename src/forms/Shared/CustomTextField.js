@@ -1,14 +1,9 @@
 import React from 'react';
-import { useField } from 'formik';
 import PropType from 'prop-types';
 
 const CustomTextField = ({
-  type, placeholder, ...props
+  type, name, placeholder, value, error, touched, handleChange, handleBlur
 }) => {
-  const [field, meta] = useField(props);
-  const {
-    name, onBlur, onChange, value,
-  } = field;
   return (
     <>
       <input
@@ -16,17 +11,17 @@ const CustomTextField = ({
         className="input"
         name={name}
         placeholder={placeholder}
-        onBlur={onBlur}
-        onChange={onChange}
+        onBlur={handleBlur}
+        onChange={handleChange}
         value={value}
         autoComplete="off"
         required
       />
-      <div className="field__error">{meta.touched && meta.error && meta.error}</div>
+      <span className="field__error">{touched && error && error}</span>
     </>
   );
 };
-export default CustomInput;
+export default CustomTextField;
 
 CustomTextField.defaultProps = {
   placeholder: '',
