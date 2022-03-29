@@ -103,9 +103,6 @@ const Register = ({ isFocus, onActive }) => {
         >
           Create
         </button>
-        <pre>
-          {JSON.stringify(values, 2, null)}
-        </pre>
       </form>
     </div>
   );
