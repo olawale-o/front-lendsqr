@@ -1,13 +1,20 @@
 import { useFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
 import PropType from 'prop-types';
 import { model, initialValues, Schema } from '../../forms/Auth';
 import { CustomTextField } from '../../forms/Shared';
+import { authenticate } from '../../services/userService';
+import { currentUser, authToken } from '../../store';
 
 const { register: { formField: { registerEmail, registerPassword, firstName, lastName } } } = model;
 const { registerSchema } = Schema;
 const { registerInitialValues } = initialValues;
 
 const Register = ({ isFocus, onActive }) => {
+  const navigate = useNavigate();
+  const setUser = useSetRecoilState(currentUser)
+  const setToken = useSetRecoilState(authToken);
   const onReset = (resetForm) => {
     if (!isFocus) {
       resetForm();
@@ -28,7 +35,12 @@ const Register = ({ isFocus, onActive }) => {
   } = useFormik({
     initialValues: registerInitialValues,
     validationSchema: registerSchema,
-    onSubmit: (values) => {},
+    onSubmit: async ({ email, password, firstName, lastName }) => {
+      const [token, user] = await authenticate({ email, password, firstName, lastName });
+      setUser(user);
+      setToken(token);
+      navigate(`/${user.id}`, { replace: true });
+    },
   });
 
   return (

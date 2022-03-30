@@ -6,8 +6,7 @@ import PropType from 'prop-types';
 import { model, initialValues, Schema } from '../../forms/Auth';
 import { CustomTextField } from '../../forms/Shared';
 import { authenticate } from '../../services/userService';
-import currentUser from '../../store/atoms/currentUser';
-import authToken from '../../store/atoms/authToken';
+import { currentUser, authToken } from '../../store';
 
 const { login: { formField: { email, password } } } = model;
 const { loginSchema } = Schema;
