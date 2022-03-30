@@ -1,13 +1,22 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
 import { useFormik } from 'formik';
 import PropType from 'prop-types';
 import { model, initialValues, Schema } from '../../forms/Auth';
 import { CustomTextField } from '../../forms/Shared';
+import { authenticate } from '../../services/userService';
+import currentUser from '../../store/atoms/currentUser';
+import authToken from '../../store/atoms/authToken';
 
 const { login: { formField: { email, password } } } = model;
 const { loginSchema } = Schema;
 const { loginInitialValues } = initialValues;
 
 const Login = ({ isFocus, onActive }) => {
+  const navigate = useNavigate();
+  const setUser = useSetRecoilState(currentUser)
+  const setToken = useSetRecoilState(authToken);
   const onReset = (resetForm) => {
     if (!isFocus) {
       resetForm();
@@ -28,7 +37,12 @@ const Login = ({ isFocus, onActive }) => {
   } = useFormik({
     initialValues: loginInitialValues,
     validationSchema: loginSchema,
-    onSubmit: (values) => {},
+    onSubmit: async ({ email, password }) => {
+      const [token, user] = await authenticate({ email, password });
+      setUser(user);
+      setToken(token);
+      navigate(`/${user.id}`, { replace: true });
+    },
   });
   return(
     <div className="login__container">
