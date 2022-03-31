@@ -5,6 +5,27 @@ import { RecoilRoot } from 'recoil';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import api from './api';
+import { getStorage } from './storage';
+import { recoilPersist } from 'recoil-persist'
+
+const { persistAtom } = recoilPersist({
+  key: 'recoil-persist',
+  storage: localStorage,
+})
+
+api.interceptors.request.use((config) => {
+  const token = getStorage('token');
+  const requestConfig = { ...config };
+  if (token) {
+    requestConfig.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+api.interceptors.response.use((response) => response, (error) => {
+  throw error;
+});
 
 ReactDOM.render(
   <React.StrictMode>
