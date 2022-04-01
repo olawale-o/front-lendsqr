@@ -1,0 +1,17 @@
+.fund {
+  display: grid;
+  place-items: center;
+  position: relative;
+  padding-top: 7rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.w-50 {
+  width: 100%;
+  max-width: 45rem;
+}
+
+.fund-form {
+  margin: 0 auto;
+}

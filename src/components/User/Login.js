@@ -46,7 +46,7 @@ const Login = ({ isFocus, onActive }) => {
   return(
     <div className="login__container">
       <form onSubmit={handleSubmit}>
-      <h1>Welcome back</h1>
+        <h1>Welcome back</h1>
         <div className="switch-buttons">
           <button type="button" className={`switch-btn ${!isFocus ? 'active' : ''}`}>Login</button>
           <button type="button" className={`switch-btn ${isFocus ? 'active' : ''}`} onClick={() => onReset(handleReset)}>Register</button>
