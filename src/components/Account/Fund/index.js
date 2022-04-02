@@ -1,17 +1,23 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import './style.css';
 import { model, initialValues, Schema } from '../../../forms/Account';
 import { CustomTextField } from '../../../forms/Shared';
+import { currentUser, currentUserSelector } from '../../../store';
+import { fundAccount } from '../../../services/userService';
 
 const { fund: { formField: { amount } } } = model;
 const { fundSchema } = Schema;
 const { fundInitialValues } = initialValues;
 const Fund = () => {
+  const navigate = useNavigate();
+  const updateUser = useSetRecoilState(currentUser);
+  const { id } = useRecoilValue(currentUserSelector);
   const {
     handleChange,
     handleSubmit,
-    handleReset,
     handleBlur,
     isSubmitting,
     dirty,
@@ -23,7 +29,9 @@ const Fund = () => {
     initialValues: fundInitialValues,
     validationSchema: fundSchema,
     onSubmit: async ({ amount }) => {
-      console.log(amount);
+      const user = await fundAccount(id, { amount });
+      updateUser(user);
+      navigate(`/${user.id}`, { replace: true });
     },
   });
   return (
