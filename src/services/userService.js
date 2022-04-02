@@ -13,3 +13,8 @@ export const authenticate = async (credentials) => {
   setStorage('token', token);
   return [token, user];
 };
+
+export const fundAccount = async (id, credentials) => {
+  const { user } = await post(`${BASE_URI}/users/${id}/deposit`, { body: credentials });
+  return user;
+};
