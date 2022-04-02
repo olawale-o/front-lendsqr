@@ -27,6 +27,7 @@
   height: 50px;
   border-radius: 20px;
   background: transparent;
+  transition: all 0.3s linear;
 }
 
 .icon {
@@ -36,11 +37,16 @@
 }
 
 .nav__link:hover {
-  background: #f5f5f5;
+  background: var(--primary-color);
 }
 
 .nav__link:hover .icon {
-  color: #000;
+  color: var(--active-link-text-color);
+  font-weight: 600;
+}
+
+.active-link {
+  color: var(--active-link-text-color);
   font-weight: 600;
 }
 
