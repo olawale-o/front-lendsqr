@@ -7,7 +7,7 @@ const CustomTextArea = ({
   return (
     <>
       <textarea
-        className="textareaa"
+        className="textarea"
         name={name}
         placeholder={placeholder}
         onBlur={handleBlur}
