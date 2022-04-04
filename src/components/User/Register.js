@@ -110,7 +110,7 @@ const Register = ({ isFocus, onActive }) => {
         </div>
         <button
           type="submit"
-          className="auth-btn"
+          className="button button-primary"
           disabled={isSubmitting || !(dirty && isValid)}
         >
           Create
