@@ -1,0 +1,22 @@
+.transfer {
+  display: grid;
+  place-items: center;
+  position: relative;
+  padding-top: 7rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.user-balance {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem;
+  background: #672795;
+  margin-bottom: 1.4rem;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 1.6rem;
+}
