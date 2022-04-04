@@ -24,6 +24,12 @@ export default {
           required: 'Recipient is required',
         },
       },
+      description: {
+        name: 'description',
+        error: {
+          required: 'Description is required',
+        },
+      }
     },
   },
 };

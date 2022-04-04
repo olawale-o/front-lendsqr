@@ -2,7 +2,7 @@ import model from './model';
 
 const {
   fund: { formField: { amount } },
-  transfer: { formField: { amountToTransfer, recipient } },
+  transfer: { formField: { amountToTransfer, recipient, description } },
 } = model;
 
 export default {
@@ -12,5 +12,6 @@ export default {
   transferInitialValues: {
     [amountToTransfer.name]: '',
     [recipient.name]: '',
+    [description.name]: '',
   },
 };
