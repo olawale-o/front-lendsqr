@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import PropType from 'prop-types';
 import './style.css';
-import { AiOutlineHome, AiOutlineMoneyCollect } from 'react-icons/ai';
+import { AiOutlineHome, AiOutlineMoneyCollect, AiOutlinePoweroff } from 'react-icons/ai';
 import { FaExchangeAlt } from 'react-icons/fa';
 
 const activeLink = {
@@ -39,6 +39,11 @@ const Sidebar = ({ currentUser }) => {
           </NavLink>
         </li>
       </ul>
+      <div className="nav_bottom">
+        <button type="button" className="logout-button">
+          <AiOutlinePoweroff className="icon" />
+        </button>
+      </div>
     </nav>
   );
 };
