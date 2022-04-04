@@ -34,7 +34,7 @@ const Sidebar = ({ currentUser }) => {
           </NavLink>
         </li>
         <li className="nav__item">
-          <NavLink to="/#" className="nav__link">
+          <NavLink to={`/${currentUser.id}/transfer`} className="nav__link">
             <FaExchangeAlt className="icon" />
           </NavLink>
         </li>
