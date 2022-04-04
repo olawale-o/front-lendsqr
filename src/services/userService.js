@@ -18,3 +18,8 @@ export const fundAccount = async (id, credentials) => {
   const { user } = await post(`${BASE_URI}/users/${id}/deposit`, { body: credentials });
   return user;
 };
+
+export const transfer = async (credentials) => {
+  const { transaction } = await post(`${BASE_URI}/transactions/transfer`, { body: credentials });
+  return transaction;
+};
