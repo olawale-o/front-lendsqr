@@ -1,7 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
+:root {
+  --primary-color: #3f51af;
+  --inactive-color: #8999ea;
+  --error-color: #d71e33;
+  --active-link-text-color: #fff;
+  --text-white: #fff;
+  --light: 500;
+  --lighter: 400;
+  --bolder: 600;
+}
+
 *,
 *::before,
 *::after {
   padding: 0;
   margin: 0;
-  box-sizing: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 62.5%;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+
+img {
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  color: #6a7986;
+}
+
+li {
+  list-style: none;
+}
+
+.button {
+  width: 100%;
+  padding: 0.8rem 1.8rem;
+  background: none;
+  border-radius: 5px;
+  font-weight: 600;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+  font-size: 1.8rem;
+}
+
+.button:hover {
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button-primary {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.button:disabled {
+  background: var(--inactive-color);
+  color: #fff;
+  font-weight: 400;
+}
+
+.error {
+  font-size: 1.4rem;
+  color: var(--error-color);
+}
+
+.text__white {
+  color: var(--text-white);
+}
+
+.fw__bolder {
+  font-weight: var(--bolder);
+}
+
+.field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid #6a7986;
+  outline: none;
+  border-radius: 5px;
+  background: #fff;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: #6a7986;
+  padding: 0.5rem;
+  letter-spacing: 4px;
+}
+
+.textarea {
+  width: 100%;
+  border: 1px solid #6a7986;
+  outline: none;
+  border-radius: 5px;
+  background: #fff;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: #6a7986;
+  padding: 0.5rem;
+  letter-spacing: 4px;
+}
+
+.auth-container {
+  min-height: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafafa;
+  margin-top: -5rem;
+}
+
+.auth-container .container {
+  width: 100%;
+  max-width: 72rem;
+  position: relative;
+  height: 42rem;
+  border-radius: 10px;
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.auth-container .overlay-container {
+  height: 100%;
+  width: 50%;
+  background-image: url('./assets/images/transfer.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  z-index: 100;
+}
+
+.auth-container .form-container {
+  height: 100%;
+  width: 50%;
+  position: relative;
+}
+
+.form-container .signup__container,
+.form-container .login__container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.form-container .login__container {
+  left: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.form-container .signup__container {
+  right: 0;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.3s ease-in-out;
+  z-index: 5;
+}
+
+.form-container.slide .login__container  {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.form-container.slide .signup__container {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.login__container form,
+.signup__container form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+form h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.switch-buttons {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.switch-buttons .switch-btn {
+  padding: 0.8rem 1.8rem;
+  background: #fff;
+  border: none;
+  color: #ccc;
+}
+
+.switch-btn:nth-child(1) {
+  margin-right: 2rem;
+}
+
+.switch-btn.active {
+  border: 1px solid #000;
+  color: #000;
+}
+
+form .continue-with {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.continue-with button {
+  width: 48%;
+  padding: 0.8rem 1.8rem;
+}
+
+.continue-with button.facebook {
+  background: #3b5998;
+  color: #fff;
+}
+
+.or {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.or .left {
+  width: 40%;
+  height: 1px;
+  background: #000;
+}
+
+.or .text {
+  margin: 0 2rem;
+  font-size: 2rem;
+}
+
+.right {
+  width: 40%;
+  height: 1px;
+  background: #000;
+}
+
+.form__submission-indicator {
+  border: 1px solid #eee;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-bottom: 2px solid #1f250a;
+  animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
