@@ -11,7 +11,7 @@ const Transaction = () => {
     <div className="transaction">
       <div className="transaction-list">
         {transactions.map((transaction) => (
-          <div className="transaction-card">
+          <div className="transaction-card" key={transaction.id}>
             <div className="transaction-card-top">
               <span className="name">{titlelize(transaction.first_name+' '+transaction.last_name)}</span>
               <span className="date">{DateTime.fromISO(transaction.created_at).toFormat('yyyy-LL-dd')}</span>
