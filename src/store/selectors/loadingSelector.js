@@ -3,7 +3,7 @@ import loading from '../atoms/loading';
 
 const loadingSelector = selector({
   key: 'loadingSelector',
-  get: ({ get }) => get(authToken),
+  get: ({ get }) => get(loading),
 });
 
 export default loadingSelector;
