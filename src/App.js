@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import { Fund, Profile, Transfer } from './components/Account';
+import { Fund, Profile, Transfer, Transaction } from './components/Account';
 import { PublicRoute, PrivateRoute } from './components/Routes';
 import Account from './pages/Account';
 import User from './pages/User';
@@ -15,6 +15,7 @@ function App() {
             <Route index path="" element={(<PrivateRoute><Profile /></PrivateRoute>)} />
             <Route path="fund" element={(<PrivateRoute><Fund /></PrivateRoute>)} />
             <Route path="transfer" element={(<PrivateRoute><Transfer /></PrivateRoute>)} />
+            <Route path="transaction" element={(<PrivateRoute><Transaction /></PrivateRoute>)} />
           </Route>
         </Route>
       </Routes>
