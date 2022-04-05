@@ -1,9 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import PropType from 'prop-types';
 import './style.css';
-import { AiOutlineHome, AiOutlineMoneyCollect, AiOutlinePoweroff } from 'react-icons/ai';
+import {
+  AiOutlineHome,
+  AiOutlineMoneyCollect,
+  AiOutlinePoweroff,
+  AiOutlineUnorderedList,
+} from 'react-icons/ai';
 import { FaExchangeAlt } from 'react-icons/fa';
 import LogoutModal from '../Modal/LogoutModal';
 import { loading, currentUser } from '../../store'
@@ -59,8 +63,21 @@ const Sidebar = () => {
           </NavLink>
         </li>
         <li className="nav__item">
-          <NavLink to={`/${user.id}/transfer`} className="nav__link">
+          <NavLink
+            to={`/${user.id}/transfer`}
+            className="nav__link"
+            style={({ isActive }) => isActive ? activeLink : undefined }
+          >
             <FaExchangeAlt className="icon" />
+          </NavLink>
+        </li>
+        <li className="nav__item">
+          <NavLink
+            to={`/${user.id}/transaction`}
+            className="nav__link"
+            style={({ isActive }) => isActive ? activeLink : undefined }
+          >
+            <AiOutlineUnorderedList className="icon" />
           </NavLink>
         </li>
       </ul>
