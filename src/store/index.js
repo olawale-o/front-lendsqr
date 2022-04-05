@@ -1,2 +1,2 @@
-export { currentUser, authToken } from './atoms';
-export { authTokenSelector, currentUserSelector } from './selectors';
+export { currentUser, authToken, loading } from './atoms';
+export { authTokenSelector, currentUserSelector, loadingSelector } from './selectors';
