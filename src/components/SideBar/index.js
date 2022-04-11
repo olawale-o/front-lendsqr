@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import './style.css';
 import {
   AiOutlineHome,
@@ -22,6 +22,7 @@ const activeLink = {
 const Sidebar = () => {
   const [isLoading, setIsLoading] = useRecoilState(loading);
   const [user, setUser] = useRecoilState(currentUser);
+  // const setLoading = useSetRecoilState();
   const [open, setOpen] = React.useState(false);
 
   const onOpen = () => {
@@ -38,6 +39,7 @@ const Sidebar = () => {
     setIsLoading(!isLoading);
     setUser(null);
     removeStorage('token');
+    setIsLoading(!!isLoading);
     onClose();
   }
   return (
