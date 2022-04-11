@@ -14,7 +14,7 @@ const LogoutModal = ({ onClose, isOpen, onConfirm, isLoading }) => {
                 Cancel
             </button>
             {isLoading
-              ? <div className="form__submission-indicator" />
+              ? <div className="circular-indicator" />
               : <button type="button" className="button confirm" onClick={onConfirm}>Logout</button>}
           </div>
         </div>
