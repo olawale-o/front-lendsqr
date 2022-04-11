@@ -84,7 +84,7 @@ const Login = ({ isFocus, onActive }) => {
             handleBlur={handleBlur}
           />
         </div>
-        {isSubmitting && <div className="form__submission-indicator" />}
+        {isSubmitting && <div className="circular-indicator" />}
         {!isSubmitting && <button
           type="submit"
           className="button button-primary"

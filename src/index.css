@@ -269,7 +269,7 @@ li {
   background: #000;
 }
 
-.form__submission-indicator {
+.circular-indicator {
   border: 1px solid #eee;
   width: 40px;
   height: 40px;
