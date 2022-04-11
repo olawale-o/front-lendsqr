@@ -200,7 +200,7 @@ li {
   padding: 2rem;
 }
 
-form h1 {
+.form__heading {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 2rem;
@@ -228,7 +228,7 @@ form h1 {
   color: #000;
 }
 
-form .continue-with {
+.continue-with {
   width: 100%;
   display: flex;
   justify-content: space-between;

@@ -11,8 +11,14 @@ const User = () => {
     <div className="auth-container">
       <div className="container">
         <div className={`form-container ${isFocus ? 'slide' : ''}`}>
-          <Login onActive={onActive} isFocus={isFocus} />
-          <Register onActive={onActive} isFocus={isFocus} />
+          <Login
+            onActive={onActive}
+            isFocus={isFocus}
+          />
+          <Register
+            onActive={onActive}
+            isFocus={isFocus}
+          />
         </div>
         <div className="overlay-container" />
       </div>

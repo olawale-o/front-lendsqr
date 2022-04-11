@@ -46,7 +46,7 @@ const Register = ({ isFocus, onActive }) => {
   return (
     <div className="signup__container">
       <form onSubmit={handleSubmit}>
-        <h1>Getting Started</h1>
+        <h1 className="form__heading">Getting Started</h1>
         <div className="switch-buttons">
           <button type="button" className={`switch-btn ${!isFocus ? 'active' : ''}`} onClick={() => onReset(handleReset)}>Login</button>
           <button type="button" className={`switch-btn ${isFocus ? 'active' : ''}`}>Register</button>
