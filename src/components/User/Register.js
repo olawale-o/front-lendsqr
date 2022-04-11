@@ -108,13 +108,14 @@ const Register = ({ isFocus, onActive }) => {
             handleBlur={handleBlur}
           />
         </div>
-        <button
+        {isSubmitting && <div className="form__submission-indicator" />}
+        {!isSubmitting && <button
           type="submit"
           className="button button-primary"
           disabled={isSubmitting || !(dirty && isValid)}
         >
           Create
-        </button>
+        </button>}
       </form>
     </div>
   );
