@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import './style.css';
 import {
   AiOutlineHome,
@@ -20,9 +20,9 @@ const activeLink = {
 };
 
 const Sidebar = () => {
+  const modalRef = React.useRef();
   const [isLoading, setIsLoading] = useRecoilState(loading);
   const [user, setUser] = useRecoilState(currentUser);
-  // const setLoading = useSetRecoilState();
   const [open, setOpen] = React.useState(false);
 
   const onOpen = () => {
@@ -42,6 +42,7 @@ const Sidebar = () => {
     setIsLoading(!!isLoading);
     onClose();
   }
+
   return (
     <nav className="side-nav">
       <ul className="nav__list">
@@ -93,6 +94,7 @@ const Sidebar = () => {
         onClose={onClose}
         isLoading={isLoading}
         onConfirm={onConfirm}
+        el={modalRef}
       />
     </nav>
   );

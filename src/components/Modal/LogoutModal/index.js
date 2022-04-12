@@ -2,12 +2,11 @@ import ReactDOM from 'react-dom';
 import PropType from 'prop-types';
 import './style.css';
 
-const LogoutModal = ({ onClose, isOpen, onConfirm, isLoading }) => {
-  if (!isOpen) return null;
+const LogoutModal = ({ onClose, isOpen, onConfirm, isLoading, el }) => {
   return (
-    ReactDOM.createPortal(
-      <div className="modal">
-        <div className="modal__body">
+    isOpen ? ReactDOM.createPortal(
+      <div className="modal" ref={el} onClick={onClose}>
+        <div className="modal__body" onClick={(e) => e.stopPropagation()}>
           <h6 className="modal__header">Are you sure</h6>
           <div className="modal__actions">
             <button type="button" className="button cancel" onClick={onClose}>
@@ -20,7 +19,7 @@ const LogoutModal = ({ onClose, isOpen, onConfirm, isLoading }) => {
         </div>
       </div>,
       document.body,
-    )
+    ): null
   );
 };
 
@@ -31,4 +30,5 @@ LogoutModal.propTypes = {
   isOpen: PropType.bool.isRequired,
   onConfirm: PropType.func.isRequired,
   isLoading: PropType.bool.isRequired,
+  el: PropType.shape({ current: PropType.instanceOf(Element) }).isRequired,
 };
