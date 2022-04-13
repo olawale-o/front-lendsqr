@@ -9,8 +9,13 @@ export const post = async (uri, options = {}) => {
   return response.data;
 };
 
-export const get = async (uri) => {
-  const response = await api.get(uri);
+export const get = async (uri, signal = undefined) => {
+  let response = null;
+  if (signal) {
+    response = await api.get(uri, { signal });
+    return response.data;
+  }
+  response = await api.get(uri);
   return response.data;
 };
 
