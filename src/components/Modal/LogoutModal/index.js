@@ -3,14 +3,15 @@ import PropType from 'prop-types';
 import './style.css';
 
 const LogoutModal = ({ onClose, isOpen, onConfirm, isLoading, el }) => {
+  if (!isOpen) return null;
   return (
-    isOpen ? ReactDOM.createPortal(
-      <div className="modal" ref={el} onClick={onClose}>
-        <div className="modal__body" onClick={(e) => e.stopPropagation()}>
+    ReactDOM.createPortal(
+      <div className="modal">
+        <div className="modal__body" ref={el}>
           <h6 className="modal__header">Are you sure</h6>
           <div className="modal__actions">
             <button type="button" className="button cancel" onClick={onClose}>
-                Cancel
+              Cancel
             </button>
             {isLoading
               ? <div className="circular-indicator" />
@@ -18,8 +19,8 @@ const LogoutModal = ({ onClose, isOpen, onConfirm, isLoading, el }) => {
           </div>
         </div>
       </div>,
-      document.body,
-    ): null
+      document.body
+    )
   );
 };
 

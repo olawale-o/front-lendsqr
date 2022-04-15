@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
 import './style.css';
 import {
   AiOutlineHome,
@@ -9,9 +8,6 @@ import {
   AiOutlineUnorderedList,
 } from 'react-icons/ai';
 import { FaExchangeAlt } from 'react-icons/fa';
-import LogoutModal from '../Modal/LogoutModal';
-import { loading, currentUser } from '../../store'
-import { removeStorage } from '../../storage';
 
 const activeLink = {
   color: '#fff',
@@ -19,29 +15,11 @@ const activeLink = {
   backgroundColor: '#3f51af',
 };
 
-const Sidebar = () => {
-  const modalRef = React.useRef();
-  const [isLoading, setIsLoading] = useRecoilState(loading);
-  const [user, setUser] = useRecoilState(currentUser);
-  const [open, setOpen] = React.useState(false);
-
+const Sidebar = ({ user, setOpen }) => {
   const onOpen = () => {
+    // document.body.style.overflow = 'hidden';
     setOpen(true);
-    document.body.style.overflow = 'hidden';
   };
-
-  const onClose = () => {
-    document.body.removeAttribute('style');
-    setOpen(false);
-  };
-
-  const onConfirm = () => {
-    setIsLoading(!isLoading);
-    setUser(null);
-    removeStorage('token');
-    setIsLoading(!!isLoading);
-    onClose();
-  }
 
   return (
     <nav className="side-nav">
@@ -89,13 +67,6 @@ const Sidebar = () => {
           <AiOutlinePoweroff className="icon" />
         </button>
       </div>
-      <LogoutModal
-        isOpen={open}
-        onClose={onClose}
-        isLoading={isLoading}
-        onConfirm={onConfirm}
-        el={modalRef}
-      />
     </nav>
   );
 };
